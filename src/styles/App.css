@@ -1,0 +1,9 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-content {
+  display: flex;
+}
