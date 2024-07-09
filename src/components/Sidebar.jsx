@@ -6,8 +6,8 @@ import '../styles/Sidebar.css';
 const Sidebar = () => {
   return (
     <aside className="sidebar">
+              <a className='asignatura'>Todas las asignaturas</a>
       <ul>
-        <a className='asignaturas'><FontAwesomeIcon icon={faBook} /> Todas las asignaturas</a>
         <li><FontAwesomeIcon icon={faCalculator} /> Matemáticas</li>
         <li><FontAwesomeIcon icon={faChartSimple} /> Estadística y Cálculo</li>
         <li><FontAwesomeIcon icon={faLanguage} /> Castellano</li>

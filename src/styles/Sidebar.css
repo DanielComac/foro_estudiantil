@@ -11,19 +11,19 @@
   }
   
   .sidebar li, .sidebar .asignaturas {
-    padding: 0.5rem 0;
+    padding: 0.8rem ;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
   
-  .sidebar li:hover, .sidebar .asignaturas:hover {
+  .sidebar li:hover {
     background-color: #e0e0e0;
     border-radius: 4px;
   }
   
-  .sidebar .asignaturas {
+  .sidebar .asignatura {
     font-weight: bold;
     margin-bottom: 1rem;
   }
