@@ -1,4 +1,3 @@
-/* Login.css */
 
 body {
     font-family: Arial, sans-serif;
@@ -24,7 +23,7 @@ body {
   }
   
   .login-input {
-    width: calc(100% - 20px); /* Ancho ajustado con margen */
+    width: calc(100% - 20px);
     padding: 15px;
     margin: 10px 0;
     border: 1px solid #969696;
@@ -70,5 +69,6 @@ body {
   
   h2 {
     font-size: 30px;
+    font-weight: 800;
   }
   

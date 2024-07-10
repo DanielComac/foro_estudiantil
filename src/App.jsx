@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import Home from './components/Home';
 import Welcome from './components/Welcome';
 import Login from './components/Login';
+import Registro from './components/Registro';
 import './styles/App.css';
 
 const App = () => {
@@ -22,6 +23,8 @@ const App = () => {
           </div>
         } />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registro />} />
+
       </Routes>
     </Router>
   );
