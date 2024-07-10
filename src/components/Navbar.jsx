@@ -38,14 +38,14 @@ const Navbar = () => {
             </div>
             <select className="modal__subject-select">
               <option value="">Selecciona la asignatura</option>
-              <option value="math">Matemáticas</option>
-              <option value="science">Estadisticas y Cálculo</option>
-              <option value="history">Castellano</option>
-              <option value="history">Historia</option>
-              <option value="history">Ciensias Sociales</option>
-              <option value="history">Geografía</option>
-              <option value="history">Derecho</option>
-              <option value="history">Contabilidad</option>
+              <option value="matematicas">Matemáticas</option>
+              <option value="estadistica">Estadisticas y Cálculo</option>
+              <option value="castellano">Castellano</option>
+              <option value="historia">Historia</option>
+              <option value="cienciassociales">Ciencias Sociales</option>
+              <option value="geografia">Geografía</option>
+              <option value="derecho">Derecho</option>
+              <option value="contabilidad">Contabilidad</option>
             </select>
             <button className="modal__ask-button">Preguntar</button>
             <button className="modal__close-button" onClick={closeModal}>Cerrar</button>
