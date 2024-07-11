@@ -48,9 +48,17 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-    res.cookie('token', "", {
-        expires: new Date(0)
-    })
-}
+    try {
+        res.cookie('token', "", {
+            expires: new Date(0),
+            httpOnly: true, // Opcional: asegura que la cookie solo se envíe en peticiones HTTP(S) y no pueda ser accedida desde JavaScript
+            secure: true   // Opcional: asegura que la cookie solo se envíe a través de HTTPS
+        });
+
+        res.status(200).json({ message: "Logout successful" });
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred during logout" });
+    }
+};
 
 

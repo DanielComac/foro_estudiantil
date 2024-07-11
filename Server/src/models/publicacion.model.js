@@ -10,7 +10,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true,
         trim: true,
-
+    },
+    materia: {
+        type: String,
+        require: true,
+        trim: true
     }
 }, {
     timestamps: true
