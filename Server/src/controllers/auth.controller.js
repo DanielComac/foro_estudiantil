@@ -1,5 +1,7 @@
 import User from '../models/user.model.js';
 import { crearTokenAcceso } from '../libs/jwt.js';
+import jwt from 'jsonwebtoken';
+import {SECRET} from '../config.js'
 
 export const registro = async (req, res) => {
     try {
@@ -60,5 +62,23 @@ export const logout = async (req, res) => {
         res.status(500).json({ message: "An error occurred during logout" });
     }
 };
+
+
+export const verifyToken = async (req, res) => {
+    const {token} = req.cookies
+
+    if(!token) return res.status(401).json({message: "No autorizado"});
+
+    jwt.verify(token, SECRET, async (err, user) => {
+        if(err) return res.status(401).json({mesage: "No autorizado"});
+
+        const userFound = await User.findById(user.id)
+        if(!userFound) return res.status(401).json({message: "No autorizado"});
+
+        return res.json({message: "Usuario encontrado"})
+
+    })
+    
+}
 
 

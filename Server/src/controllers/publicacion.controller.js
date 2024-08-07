@@ -63,7 +63,7 @@ export const putPublicacion = async (req, res) => {
 export const deletePublicacion = async (req, res) => {
     try {
         const publicacion = await Publicacion.findByIdAndDelete(req.params.id);
-        res.json({mensaje:"Publicación eliminada"});
+        res.status(204).json({mensaje:"Publicación eliminada"});
 
         if(!publicacion) return res.json({mensaje:"No existe la publicacion"})
 
