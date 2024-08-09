@@ -22,6 +22,7 @@
   .home__content {
     display: flex;
     flex-direction: column;
+    margin-top: 1rem;
   }
   
   .home__filter {
@@ -29,7 +30,16 @@
     gap: 1rem;
     margin-bottom: 1rem;
   }
-  
+
+  .home__questions {
+    width: 100%; /* Ajusta el ancho según tus necesidades */
+    height: 400px; /* Ajusta la altura según tus necesidades */
+    overflow-y: auto; /* Permite el scroll vertical */
+    /* border: 1px solid #ccc; Opcional: añade un borde para visualizar mejor el contenedor */
+    padding: 10px; /* Opcional: añade un poco de espacio interno */
+
+  }
+
   .home__questions .question {
     background-color: #fff;
     padding: 1rem;

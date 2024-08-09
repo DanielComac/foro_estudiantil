@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePublicacion } from '../context/PublicacionesContext';
 import '../styles/Navbar.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
-  const {createPublicacion} = usePublicacion();
+const CreatePublication = () => {
+  const {createPublicacion, getPublicacion} = usePublicacion();
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -40,23 +40,23 @@ const Navbar = () => {
 
 
   return (
-    <nav className="navbar">
-      <div className="navbar__logo">Foro Estudiantil</div>
-      <input type="text" placeholder="Busca una respuesta..." className="navbar__search" />
-      <div className="navbar__actions">
-        {/* <button className="navbar__button" onClick={handleAskQuestion}> */}
-        <Link to="/publicacion" className="navbar__button">Hacer una Pregunta</Link>
+    // <nav className="navbar">
+    //   <div className="navbar__logo">Foro Estudiantil</div>
+    //   <input type="text" placeholder="Busca una respuesta..." className="navbar__search" />
+    //   <div className="navbar__actions">
+    //     {/* <button className="navbar__button" onClick={handleAskQuestion}> */}
+    //     <Link onClick={handleAskQuestion} to="/publicacion" className="navbar__button"  >Hacer una Pregunta</Link>
 
-        {/* </button> */}
+    //     {/* </button> */}
         
-        <div className="navbar__profile"></div>
-      </div>
-
-      {modalVisible && (
+    //     <div className="navbar__profile"></div>
+    //   </div>
+    <div>
+       
         <div className="modal">
           <div className="modal__content">
             <h2 className='pregunta'>Haz una pregunta sobre tu tarea</h2>
-            <input onChange={handleChange} name='titulo' placeholder='Escribe un titulo para tu pregunta' className='modal__input'></input>
+            <input onChange={handleChange} name='titulo' placeholder='Escribe un titulo para tu pregunta' className='modal__input' ></input>
             <textarea onChange={handleChange} name='descripcion' placeholder="Escribe aquí tu pregunta de forma clara" className="modal__input" rows={4}></textarea>
             <div className="modal__file-upload">
               <label htmlFor="file-upload" className="modal__file-label">
@@ -75,13 +75,15 @@ const Navbar = () => {
               <option value="derecho">Derecho</option>
               <option value="contabilidad">Contabilidad</option>
             </select>
-            <button className="modal__ask-button" onClick={() => {enviarDatos(), closeModal()}}>Preguntar</button>
+            <button className="modal__ask-button" onClick={enviarDatos}>Preguntar</button>
             <button className="modal__close-button" onClick={closeModal}>Cerrar</button>
           </div>
         </div>
-      )}
-    </nav>
+
+    </div>
+      
+    // </nav>
   );
 };
 
-export default Navbar;
+export default CreatePublication;

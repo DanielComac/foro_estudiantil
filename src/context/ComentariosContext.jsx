@@ -1,33 +1,44 @@
 import { createContext, useContext, useState } from "react";
-import { createPublicacionRequest, getPublicacionesRequest, deletePublicacionRequest, getPublicacionRequest, updatePublicacionRequest } from "../api/publicaciones";
+import { createComentarioRequest, getComentariosRequest } from "../api/comentarios";
+import Cookies from 'js-cookie';
 
-const PublicacionContext = createContext();
 
-export const usePublicacion = () => {
-    const context = useContext(PublicacionContext);
+
+const ComentarioContext = createContext();
+
+export const useComentario = () => {
+    const context = useContext(ComentarioContext);
 
     if (!context) {
-        throw new Error("No existe un contexto de publicaciones");
+        throw new Error("No existe un contexto de comentarios");
     }
 
     return context;
 }
 
-export function PublicacionProvider({children}) {
+export function ComentarioProvider({children}) {
 
-    const [publicaciones, setPublicaciones] = useState([]);
+    const [comentarios, setComentarios] = useState([]);
 
-    const createPublicacion = async (publicacion) => {
-        const res = await createPublicacionRequest(publicacion);
-        console.log(res);
+    const createComentario = async (comentario) => {
+        try {
+            const res = await createComentarioRequest(comentario);
+            Cookies.set('publicacion', JSON.stringify(res.data.publicacion_id));
+            console.log(res);
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+        
 
     }
 
-    const getPublicaciones = async (publicacion) => {
+    const getComentarios = async (comentario) => {
         try {
-            const res = await getPublicacionesRequest(publicacion);
+            const res = await getComentariosRequest(comentario);
             console.log(res.data);
-            setPublicaciones(res.data);
+            setComentarios(res.data);
             
         } catch (error) {
             console.log(error);
@@ -71,15 +82,13 @@ export function PublicacionProvider({children}) {
 
 
     return (
-        <PublicacionContext.Provider value={{
-            publicaciones,
-            createPublicacion,
-            getPublicaciones,
-            deletePublicacion,
-            getPublicacion,
-            updatePublicacion
+        <ComentarioContext.Provider value={{
+            createComentario,
+            comentarios,
+            getComentarios
+          
         }}>
             {children}
-        </PublicacionContext.Provider>
+        </ComentarioContext.Provider>
     )
 }

@@ -12,9 +12,10 @@ export const useAuth = () => {
   };
 
 export const AuthProvider = ({children}) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
+    var userId = ""
 
     const signup = async (user) => {
         try {
@@ -34,6 +35,8 @@ export const AuthProvider = ({children}) => {
             const res = await peticionInicioSesion(user);
             console.log(res);
             setUser(res.data);
+            console.log(user);
+            Cookies.set('user', JSON.stringify(res.data.user));
             setIsAuthenticated(true);
             
 
@@ -77,6 +80,7 @@ export const AuthProvider = ({children}) => {
     
     }, [])
 
+
     return (
         <AuthContext.Provider value={{
             signup,
@@ -84,6 +88,7 @@ export const AuthProvider = ({children}) => {
             loading,
             user,
             isAuthenticated,
+            userId
             
 
         }}>

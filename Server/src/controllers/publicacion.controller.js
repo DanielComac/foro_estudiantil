@@ -32,7 +32,8 @@ export const postPublicacion = async (req, res) => {
         const newPublicacion = new Publicacion({
             titulo,
             descripcion,
-            materia
+            materia,
+            user: req.user.id
         })
 
         await newPublicacion.save();

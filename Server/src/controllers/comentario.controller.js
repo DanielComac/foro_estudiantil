@@ -28,13 +28,17 @@ export const getComentario = async (req, res) => {
 
 export const postComentario = async (req, res) => {
     try {
-        const {descripcion} = req.body;
+        const {descripcion, publicacion_id} = req.body;
         const newComentario = new Comentario({
-            descripcion
+            descripcion,
+            publicacion_id
         })
 
         await newComentario.save();
-        res.json({mensaje : "comentario enviado"})
+        res.json({
+            mensaje : "comentario enviado",
+            publicacion_id: req.body.publicacion_id
+        })
 
     } catch(error){
         res.json({mensaje:"Error al enviar el comentario"})
