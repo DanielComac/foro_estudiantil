@@ -22,6 +22,7 @@ export const AuthProvider = ({children}) => {
         const res = await peticionRegistro(user);
         console.log(res.data);
         setUser(res.data)
+        Cookies.set('user', JSON.stringify(res.data.userId));
         setIsAuthenticated(true);
             
         } catch (error) {

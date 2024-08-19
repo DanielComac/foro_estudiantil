@@ -16,7 +16,10 @@ export const registro = async (req, res) => {
         const token = await crearTokenAcceso({id:userSaved._id})
 
         res.cookie("token", token);
-        res.json({mensaje : "usuario creado"})
+        res.json({
+            mensaje : "usuario creado",
+            userId: userSaved._id
+        })
 
     } catch(error){
         console.log(error);
@@ -65,7 +68,6 @@ export const logout = async (req, res) => {
         res.status(500).json({ message: "An error occurred during logout" });
     }
 };
-
 
 export const verifyToken = async (req, res) => {
     const {token} = req.cookies

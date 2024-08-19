@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { createComentarioRequest, getComentariosRequest } from "../api/comentarios";
+import { createComentarioRequest, getComentariosRequest, deleteComentarioRequest, updateComentarioRequest, getComentarioRequest } from "../api/comentarios";
 import Cookies from 'js-cookie';
 
 
@@ -46,10 +46,10 @@ export function ComentarioProvider({children}) {
         }
     }
 
-    const deletePublicacion = async (id) => {
+    const deleteComentario = async (id) => {
         try {
-            const res = await deletePublicacionRequest(id)
-            if (res.status === 204) setPublicaciones(publicaciones.filter(publicacion => publicacion._id !== id))
+            const res = await deleteComentarioRequest(id)
+            if (res.status === 204) setComentarios(comentarios.filter(comentario => comentario._id !== id))
 
             
         } catch (error) {
@@ -58,9 +58,9 @@ export function ComentarioProvider({children}) {
         }
     }
 
-    const getPublicacion = async (id) => {
+    const getComentario = async (id) => {
         try {
-            const res = await getPublicacionRequest(id);
+            const res = await getComentarioRequest(id);
             return res.data;
             
         } catch (error) {
@@ -69,9 +69,9 @@ export function ComentarioProvider({children}) {
         }
     }
 
-    const updatePublicacion = async (id, datos) => {
+    const updateComentario = async (id, datos) => {
         try {
-            await updatePublicacionRequest(id, datos);
+            await updateComentarioRequest(id, datos);
             
         } catch (error) {
             console.log(error);
@@ -85,7 +85,10 @@ export function ComentarioProvider({children}) {
         <ComentarioContext.Provider value={{
             createComentario,
             comentarios,
-            getComentarios
+            getComentarios,
+            deleteComentario,
+            updateComentario,
+            getComentario
           
         }}>
             {children}

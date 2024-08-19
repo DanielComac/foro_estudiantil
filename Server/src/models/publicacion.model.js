@@ -11,6 +11,10 @@ const userSchema = new mongoose.Schema({
         require: true,
         trim: true,
     },
+    url: {
+        type: String,
+        trim: true
+    },
     materia: {
         type: String,
         require: true,

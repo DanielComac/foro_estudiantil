@@ -31,7 +31,8 @@ export const postComentario = async (req, res) => {
         const {descripcion, publicacion_id} = req.body;
         const newComentario = new Comentario({
             descripcion,
-            publicacion_id
+            publicacion_id,
+            user: req.user.id
         })
 
         await newComentario.save();
@@ -65,7 +66,7 @@ export const putComentario = async (req, res) => {
 export const deleteComentario = async (req, res) => {
     try {
         const comentarios = await Comentario.findByIdAndDelete(req.params.id);
-        res.json({mensaje:"comentario eliminado"});
+        res.status(204).json({mensaje:"comentario eliminado"});
 
         if(!comentarios) return res.json({mensaje:"No existe el comentario"})
 

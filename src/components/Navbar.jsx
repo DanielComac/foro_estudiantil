@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { usePublicacion } from '../context/PublicacionesContext';
 import '../styles/Navbar.css';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 
 const Navbar = () => {
   const {createPublicacion} = usePublicacion();
@@ -38,6 +40,14 @@ const Navbar = () => {
       createPublicacion(publicacion);
     }
 
+    const navigate = useNavigate()
+
+    function borrarCookies() {
+      Cookies.remove("token");
+      Cookies.remove("user");
+      Cookies.remove("publicacion");
+      window.location.reload()
+    }
 
   return (
     <nav className="navbar">
@@ -46,6 +56,7 @@ const Navbar = () => {
       <div className="navbar__actions">
         {/* <button className="navbar__button" onClick={handleAskQuestion}> */}
         <Link to="/publicacion" className="navbar__button">Hacer una Pregunta</Link>
+        <button className='navbar__button' onClick={borrarCookies}>Cerrar Sesión</button>
 
         {/* </button> */}
         

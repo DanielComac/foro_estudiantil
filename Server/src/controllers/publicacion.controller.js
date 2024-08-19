@@ -28,10 +28,11 @@ export const getPublicacion = async (req, res) => {
 
 export const postPublicacion = async (req, res) => {
     try {
-        const {titulo, descripcion, materia} = req.body;
+        const {titulo, descripcion, url, materia} = req.body;
         const newPublicacion = new Publicacion({
             titulo,
             descripcion,
+            url,
             materia,
             user: req.user.id
         })

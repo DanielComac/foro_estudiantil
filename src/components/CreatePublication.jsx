@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { usePublicacion } from '../context/PublicacionesContext';
 import '../styles/Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { uploadFile } from '../firebase/config';
 
 const CreatePublication = () => {
   const {createPublicacion, getPublicacion} = usePublicacion();
 
   const [modalVisible, setModalVisible] = useState(false);
+  const navigate = useNavigate()
+
+  const [file, setFile] = useState();
+  const [url, setUrl] = useState();
+  console.log(file);
+
 
   const openModal = () => {
     setModalVisible(true);
@@ -14,6 +21,7 @@ const CreatePublication = () => {
 
   const closeModal = () => {
     setModalVisible(false);
+    navigate("/home");
   };
 
   const handleAskQuestion = () => {
@@ -23,6 +31,7 @@ const CreatePublication = () => {
   const [publicacion, setPublicacion] = useState({
     titulo: '',
     descripcion: '',
+    url: url,
     materia: ''
   });
 
@@ -34,9 +43,39 @@ const CreatePublication = () => {
     });
   };
 
-  async function enviarDatos() {
-      createPublicacion(publicacion);
+  // async function subirArchivo() {
+  //   const result = await uploadFile(file);
+  //   setUrl(result);
+  //   console.log(url);
+  // }
+
+  // async function enviarDatos() {
+  //     createPublicacion(publicacion);
+  //     navigate("/home");
+
+  //   }
+  const subirArchivo = async () => {
+    if (file) {
+      const result = await uploadFile(file);
+      setUrl(result);
+      return result;
     }
+    return null;
+  };
+
+  const enviarDatos = async (url) => {
+    const updatedPublicacion = {
+      ...publicacion,
+      url: url
+    };
+    await createPublicacion(updatedPublicacion);
+  };
+
+  const handleSubmit = async () => {
+    const uploadedUrl = await subirArchivo();
+    await enviarDatos(uploadedUrl);
+    closeModal();
+  };
 
 
   return (
@@ -61,7 +100,7 @@ const CreatePublication = () => {
             <div className="modal__file-upload">
               <label htmlFor="file-upload" className="modal__file-label">
                 Subir archivos
-                <input type="file" id="file-upload" className="modal__file-input" />
+                <input type="file" id="file-upload" className="modal__file-input" onChange={e => setFile(e.target.files[0])} />
               </label>
             </div>
             <select onChange={handleChange} name='materia' className="modal__subject-select">
@@ -75,7 +114,7 @@ const CreatePublication = () => {
               <option value="derecho">Derecho</option>
               <option value="contabilidad">Contabilidad</option>
             </select>
-            <button className="modal__ask-button" onClick={enviarDatos}>Preguntar</button>
+            <button className="modal__ask-button" onClick={handleSubmit}>Preguntar</button>
             <button className="modal__close-button" onClick={closeModal}>Cerrar</button>
           </div>
         </div>

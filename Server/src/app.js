@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import router from './routes/auth.routes.js';
 import routerPublicaciones from './routes/publicacion.routes.js';
 import routerComentarios from './routes/comentario.routes.js'
+import userRouter from './routes/user.routes.js';
 
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -22,6 +23,7 @@ app.use(cookieParser());
 app.use("/api", router);
 app.use("/api", routerPublicaciones);
 app.use("/api", routerComentarios);
+app.use("/api", userRouter);
 
 
 export default app;

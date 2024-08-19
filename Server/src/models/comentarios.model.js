@@ -10,7 +10,11 @@ const userSchema = new mongoose.Schema({
     publicacion_id :{
         type: String,
         trim: true
-    }
+    },
+    user : {
+        type: String,
+        trim: true    
+    },
 }, {
     timestamps: true
 })

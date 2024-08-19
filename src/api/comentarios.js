@@ -2,7 +2,7 @@ import axios from './axios';
 
 export const getComentariosRequest = () => axios.get('/comentarios');
 
-export const getComentarioRequest = (id) => axios.get(`/comentario/${id}`);
+export const getComentarioRequest = (id) => axios.get(`/comentarios/${id}`);
 
 export const createComentarioRequest = (comentario) => axios.post('/comentarios', comentario);
 
