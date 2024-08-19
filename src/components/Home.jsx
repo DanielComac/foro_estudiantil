@@ -19,7 +19,7 @@ const Home = ({ materiaSeleccionada, searchTerm }) => { // Cambia aquí
     getPublicaciones();
     getComentarios();
     getUsers();
-  }, [getPublicaciones, getComentarios, getUsers]);
+  }, []);
 
   useEffect(() => {
     const storedUser = Cookies.get('user');
