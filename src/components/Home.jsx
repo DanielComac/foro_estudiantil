@@ -73,12 +73,12 @@ const Home = ({ materiaSeleccionada, searchTerm }) => {
                 Ver {comentarios.filter(comentario => comentario.publicacion_id === publicacion._id).length} respuestas
               </button><br></br><br></br>
               {(publicacion.user !== gato) ? (
-                <Link className='home__button' to={`/comentario/${publicacion._id}`}>RESOLVER</Link>
+                <Link className='resolver' to={`/comentario/${publicacion._id}`}>RESOLVER</Link>
               ) : null}
               {gato === publicacion.user && (
                 <>
-                  <button onClick={() => deletePublicacion(publicacion._id)}>Eliminar</button>
-                  <Link className="home__button" to={`/publicacion/${publicacion._id}`}>Editar</Link>
+                  <Link className="delete" onClick={() => deletePublicacion(publicacion._id)}>Eliminar</Link>
+                  <Link className="edit" to={`/publicacion/${publicacion._id}`}>Editar</Link>
                 </>
               )}
               <br /><br /><br />

@@ -8,6 +8,36 @@
  
   
   .home__button {
+    background-color: #1f1f1f;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    align-items: flex-end;
+  }
+
+  .delete {
+    background-color: #c90606;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    align-items: flex-end;
+  }
+  
+  .edit {
+    background-color: #0390e2;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    align-items: flex-end;
+  }
+  
+  .resolver {
     background-color: #007bff;
     color: #fff;
     padding: 0.5rem 1rem;
@@ -40,12 +70,6 @@
 
   }
 
-  .home__questions .question {
-    background-color: #fff;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    margin-bottom: 1rem;
-  }
   
   .question span {
     display: block;
@@ -71,7 +95,7 @@
 }
   
   .question button {
-    background-color: #28a745;
+    background-color: #000000;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
