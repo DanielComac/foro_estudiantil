@@ -7,7 +7,7 @@ import { useUser } from '../context/UserContext';
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 
-const Home = ({ materiaSeleccionada, searchTerm }) => { // Cambia aquí
+const Home = ({ materiaSeleccionada, searchTerm }) => { 
   const { getPublicaciones, publicaciones, deletePublicacion } = usePublicacion();
   const { getComentarios, comentarios, deleteComentario } = useComentario();
   const { user } = useAuth();
