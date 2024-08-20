@@ -13,7 +13,7 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://foroapp-ericks-projects-d6e35f61.vercel.app',
     credentials: true
 }));
 app.use(morgan('dev'));
