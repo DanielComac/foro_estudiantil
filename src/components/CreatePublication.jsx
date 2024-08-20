@@ -107,7 +107,7 @@ const CreatePublication = () => {
               <option value="">Selecciona la asignatura</option>
               <option value="matematicas">Matemáticas</option>
               <option value="estadistica">Estadisticas y Cálculo</option>
-              <option value="castellano">Castellano</option>
+              <option value="español">Español</option>
               <option value="historia">Historia</option>
               <option value="cienciassociales">Ciencias Sociales</option>
               <option value="geografia">Geografía</option>

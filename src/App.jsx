@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { PublicacionProvider } from "./context/PublicacionesContext";
@@ -18,12 +18,21 @@ import Users from './components/Users';
 import Message from "./components/Message";
 
 import CreateComment from "./components/CreateComment";
-
 import ProtectedRoute from "../ProtectedRoute";
-
 import "./styles/App.css";
 
 const App = () => {
+  const [materiaSeleccionada, setMateriaSeleccionada] = useState('Todas las asignaturas');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSelectMateria = (materia) => {
+    setMateriaSeleccionada(materia);
+  };
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
+
   return (
     <AuthProvider>
       <UserProvider>
@@ -38,10 +47,10 @@ const App = () => {
                     path="/home"
                     element={
                       <div className="app">
-                        <Navbar />
+                        <Navbar onSearch={handleSearch} />
                         <div className="main-content">
-                          <Sidebar />
-                          <Home />
+                          <Sidebar onSelectMateria={handleSelectMateria} />
+                          <Home materiaSeleccionada={materiaSeleccionada} searchTerm={searchTerm} />
                         </div>
                       </div>
                     }
@@ -64,12 +73,7 @@ const App = () => {
                     element={<EditPublication />}
                   />
                   <Route path="/publicacion/" element={<CreatePublication />} />
-
-                  <Route
-                    path="/comentario/:id"
-                    element={<CreateComment />}
-                  ></Route>
-
+                  <Route path="/comentario/:id" element={<CreateComment />} />
                   <Route path="/Editarcomentario/:id" element={<EditComment />} />
 
                   <Route path="/users" element={
