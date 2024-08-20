@@ -9,7 +9,8 @@ export const registro = async (req, res) => {
         const newUser = new User({
             username,
             email,
-            password
+            password,
+            priv: 'user'
         })
 
         const userSaved = await newUser.save();
@@ -18,7 +19,8 @@ export const registro = async (req, res) => {
         res.cookie("token", token);
         res.json({
             mensaje : "usuario creado",
-            userId: userSaved._id
+            userId: userSaved._id,
+            priv: userSaved.priv
         })
 
     } catch(error){
@@ -44,7 +46,8 @@ export const login = async (req, res) => {
         res.cookie("token", token);
         res.json({
             mensaje : "Bienvenido",
-            user: usuarioEncontrado._id
+            user: usuarioEncontrado._id,
+            priv: usuarioEncontrado.priv
         })
 
     } catch(error){

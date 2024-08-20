@@ -17,7 +17,20 @@ export const getUsers = async (req, res) => {
     }
 }
 
-export const updateUser = (req, res) => {
+export const updateUser = async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+            new: true
+        });
+        res.json({mensaje:"Usuario actualizado"});
+
+        if(!user) return res.json({mensaje:"No existe el usuario"})
+
+    } catch(error) {
+        res.json({mensaje: "Error al actualizar"})
+
+    }
+
 
 }
 

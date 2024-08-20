@@ -23,6 +23,7 @@ export const AuthProvider = ({children}) => {
         console.log(res.data);
         setUser(res.data)
         Cookies.set('user', JSON.stringify(res.data.userId));
+        Cookies.set('priv', JSON.stringify(res.data.priv));
         setIsAuthenticated(true);
             
         } catch (error) {
@@ -38,6 +39,7 @@ export const AuthProvider = ({children}) => {
             setUser(res.data);
             console.log(user);
             Cookies.set('user', JSON.stringify(res.data.user));
+            Cookies.set('priv', JSON.stringify(res.data.priv));
             setIsAuthenticated(true);
             
 

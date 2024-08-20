@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getusersRequest } from "../api/users";
+import { getusersRequest, updateUserRequest } from "../api/users";
 
 const UserContext = createContext();
 
@@ -58,9 +58,9 @@ export function UserProvider({children}) {
         }
     }
 
-    const updatePublicacion = async (id, datos) => {
+    const updateUser = async (id, datos) => {
         try {
-            await updatePublicacionRequest(id, datos);
+            await updateUserRequest(id, datos);
             
         } catch (error) {
             console.log(error);
@@ -73,7 +73,8 @@ export function UserProvider({children}) {
     return (
         <UserContext.Provider value={{
             getUsers,
-            userData
+            userData,
+            updateUser
         }}>
             {children}
         </UserContext.Provider>

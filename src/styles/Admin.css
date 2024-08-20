@@ -1,0 +1,73 @@
+.home {
+    flex: 1;
+    padding: 1rem;
+    margin-left: 3rem;
+  }
+  
+  .home h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .home__button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .home__content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+  
+  .home__filter {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .home__questions {
+    width: 100%; /* Ajusta el ancho según tus necesidades */
+    height: 600px; /* Ajusta la altura según tus necesidades */
+    overflow-y: auto; /* Permite el scroll vertical */
+    /* border: 1px solid #ccc; Opcional: añade un borde para visualizar mejor el contenedor */
+    padding: 10px; /* Opcional: añade un poco de espacio interno */
+
+  }
+
+  .home__questions .question {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1rem;
+  }
+  
+  .question span {
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+  }
+  
+  .question p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .question button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+
+  .preguntas_recientes {
+    font-weight: bold;
+    font-size: 23px;
+  }

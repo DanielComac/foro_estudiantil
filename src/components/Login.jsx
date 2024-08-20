@@ -14,12 +14,19 @@ const Login = () => {
     password:''
   })
   
-  const {isAuthenticated, signin } = useAuth();
+  const {isAuthenticated, signin, user } = useAuth();
   const navigate = useNavigate();
   
   useEffect(() => {
-    if (isAuthenticated) navigate('/home')
-  },[isAuthenticated]);
+    if (isAuthenticated && user.priv == "user") {
+      navigate('/home');
+    } else if (isAuthenticated && user.priv == "admin") {
+      navigate('/admin');
+    } else if (isAuthenticated && user.priv == "") {
+      navigate('/cuentaBloqueada');
+    }
+
+  },[isAuthenticated, user]);
   
   
   const handleChange = (e) => {

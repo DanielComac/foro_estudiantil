@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Home.css";
+import "../styles/Admin.css";
 import { usePublicacion } from "../context/PublicacionesContext";
 import { useComentario } from "../context/ComentariosContext";
 import { useAuth } from "../context/AuthContext";
@@ -7,7 +7,7 @@ import { useUser } from "../context/UserContext";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const AdminView = () => {
   const { getPublicaciones, publicaciones, deletePublicacion } =
     usePublicacion();
   const { getComentarios, comentarios, deleteComentario } = useComentario();
@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const storedId = Cookies.get("publicacion");
+    const storedId = Cookies.get("priv");
     if (storedId) {
       setPerro(JSON.parse(storedId));
     }
@@ -41,15 +41,15 @@ const Home = () => {
   console.log(user);
 
   return (
-    <>
-      
+    
+
         <div className="home">
-          <h1>¿Qué quieres saber?</h1>
-          <button className="home__button">PREGUNTAR</button>
+          
+          
           <br></br>
           <br></br>
           <div className="home__content">
-            <a className="preguntas_recientes">Preguntas Recientes</a>
+            <a className="preguntas_recientes">Preguntas y comentarios de los usuarios</a>
             <div className="home__questions">
               {publicaciones.map((publicacion) => (
                 <div className="question" key={publicacion._id}>
@@ -73,33 +73,20 @@ const Home = () => {
 
                   <br></br>
 
-                  {publicacion.user !== gato ? (
-                    <Link
-                      className="home__button"
-                      to={`/comentario/${publicacion._id}`}
-                    >
-                      RESOLVER
-                    </Link>
-                  ) : (
-                    <></>
-                  )}
-
-                  {gato === publicacion.user && (
-                    <>
+                 
                       <button
                         onClick={() => deletePublicacion(publicacion._id)}
                       >
                         Eliminar
                       </button>
 
-                      <Link
+                      {/* <Link
                         className="home__button"
                         to={`/publicacion/${publicacion._id}`}
                       >
                         Editar
-                      </Link>
-                    </>
-                  )}
+                      </Link> */}
+
                   <br></br>
                   <br></br>
                   <br></br>
@@ -121,8 +108,6 @@ const Home = () => {
                             <p>{comentario.descripcion}</p>
                             <br></br>
 
-                            {comentario.user === gato ? (
-                              <>
                                 <button
                                   onClick={() =>
                                     deleteComentario(comentario._id)
@@ -130,16 +115,13 @@ const Home = () => {
                                 >
                                   Eliminar
                                 </button>
-                                <Link
+                                {/* <Link
                                   className="home__button"
                                   to={`/Editarcomentario/${comentario._id}`}
                                 >
                                   Editar
-                                </Link>
-                              </>
-                            ) : (
-                              <></>
-                            )}
+                                </Link> */}
+                          
                           </div>
                         </>
                       )}
@@ -151,8 +133,8 @@ const Home = () => {
           </div>
         </div>
       
-    </>
+    
   );
 };
 
-export default Home;
+export default AdminView;

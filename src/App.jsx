@@ -13,6 +13,9 @@ import Registro from "./components/Registro";
 import CreatePublication from "./components/CreatePublication";
 import EditPublication from "./components/EditPublication";
 import EditComment from "./components/EditComment";
+import AdminView from "./components/AdminView";
+import Users from './components/Users';
+import Message from "./components/Message";
 
 import CreateComment from "./components/CreateComment";
 
@@ -43,6 +46,19 @@ const App = () => {
                       </div>
                     }
                   />
+
+                    <Route
+                    path="/admin"
+                    element={
+                      <div className="app">
+                        <Navbar />
+                        <div className="main-content">
+                          <AdminView />
+                        </div>
+                      </div>
+                    }
+                  />
+
                   <Route
                     path="/publicacion/:id"
                     element={<EditPublication />}
@@ -55,6 +71,18 @@ const App = () => {
                   ></Route>
 
                   <Route path="/Editarcomentario/:id" element={<EditComment />} />
+
+                  <Route path="/users" element={
+                    <div className="app">
+                    <Navbar />
+                    <div className="main-content">
+                      <Users />
+                    </div>
+                  </div>
+                    
+                    } />
+
+                  <Route path="/cuentaBloqueada" element={ <Message />}></Route>
                 </Route>
 
                 <Route path="/welcome" element={<Welcome />} />
