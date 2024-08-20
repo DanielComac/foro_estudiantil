@@ -37,11 +37,14 @@ const Home = ({ materiaSeleccionada, searchTerm }) => {
     }
   }, []);
 
-  const publicacionesFiltradas = publicaciones.filter(publicacion => 
-    (materiaSeleccionada === 'Todas las asignaturas' || publicacion.materia === materiaSeleccionada) &&
-    (publicacion.titulo.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    publicacion.materia.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
+  // Filtrar y ordenar publicaciones por fecha (más recientes primero)
+  const publicacionesFiltradas = publicaciones
+    .filter(publicacion => 
+      (materiaSeleccionada === 'Todas las asignaturas' || publicacion.materia === materiaSeleccionada) &&
+      (publicacion.titulo.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      publicacion.materia.toLowerCase().includes(searchTerm.toLowerCase()))
+    )
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); // Ordenar por fecha
 
   const handleOpenModal = (publicacion) => {
     setSelectedQuestion(publicacion);

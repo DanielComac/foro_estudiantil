@@ -4,7 +4,7 @@ import '../styles/Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-const Navbar = ({ onSearch }) => { // Añadido onSearch como prop
+const Navbar = ({ onSearch }) => { 
   const { createPublicacion } = usePublicacion();
   const [modalVisible, setModalVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,7 +14,7 @@ const Navbar = ({ onSearch }) => { // Añadido onSearch como prop
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    onSearch(e.target.value); // Propaga el término de búsqueda
+    onSearch(e.target.value); 
   };
 
   const handleAskQuestion = () => {
